@@ -24,16 +24,6 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * 创建一个商品
      *
      * @param \Illuminate\Http\Request $request
@@ -62,7 +52,9 @@ class ProductController extends Controller
             $product->skus()->createMany($sku);
             $product->tags()->createMany($tag);
             DB::commit();
-            return 123;
+            return response()->json([
+                'data'=>'创建成功'
+            ]);
         } catch (\Exception $e) {
             //接收异常处理并回滚
             DB::rollBack();
@@ -83,17 +75,6 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return new ProductResource($product);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Product $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
     }
 
     /**
