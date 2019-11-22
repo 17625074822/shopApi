@@ -20,6 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('sort');
             $table->char('status', 1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

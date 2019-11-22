@@ -22,6 +22,7 @@ class CreateNavsTable extends Migration
             $table->unsignedBigInteger('linkable_id');
             $table->char('status', 1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

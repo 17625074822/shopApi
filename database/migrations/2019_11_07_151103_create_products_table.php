@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->integer('sort');
             $table->char('status',1);
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }

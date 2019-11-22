@@ -20,6 +20,7 @@ class CreateTagsTable extends Migration
             $table->string('value', 255);
             $table->char('status', 1);
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }

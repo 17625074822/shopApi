@@ -18,13 +18,14 @@ class CreateSkusTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->unsignedDecimal('original_price', 10, 2);
             $table->unsignedDecimal('price', 10, 2);
-            $table->string('attr1', 50);
-            $table->string('attr2', 50);
-            $table->string('attr3', 50);
+            $table->string('attr1', 50)->nullable();
+            $table->string('attr2', 50)->nullable();
+            $table->string('attr3', 50)->nullable();
             $table->integer('quantity');
             $table->integer('sort');
             $table->char('status', 1);
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
